@@ -1,36 +1,37 @@
 name: ChunabLive Bot
 
 on:
-  schedule:
-    - cron: "15 * * * *"   # runs hourly at minute 15 (UTC)
-  workflow_dispatch:
+    schedule:
+        - cron: '15 * * * *' # runs hourly at minute 15 (UTC)
+    workflow_dispatch:
 
 permissions:
-  contents: write
+    contents: write
 
 jobs:
-  run:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
+    run:
+        runs-on: ubuntu-24.04
 
-      - uses: actions/setup-node@v4
-        with:
-          node-version: "20"
+        steps:
+            - uses: actions/checkout@v4
 
-      - run: npm ci || npm i
+            - uses: actions/setup-node@v4
+              with:
+                  node-version: '20'
 
-      - name: Run ChunabLive bot
-        env:
-          TARGET_URL: ${{ secrets.TARGET_URL }}
-          FB_PAGE_ID: ${{ secrets.FB_PAGE_ID }}
-          FB_PAGE_ACCESS_TOKEN: ${{ secrets.FB_PAGE_ACCESS_TOKEN }}
-        run: node index.js
+            - run: npm ci || npm i
 
-      - name: Commit state.json if changed
-        run: |
-          git config user.name "github-actions"
-          git config user.email "github-actions@github.com"
-          git add state.json
-          git commit -m "Update state" || echo "No changes"
-          git push || echo "Nothing to push"
+            - name: Run ChunabLive bot
+              env:
+                  TARGET_URL: ${{ secrets.TARGET_URL }}
+                  FB_PAGE_ID: ${{ secrets.FB_PAGE_ID }}
+                  FB_PAGE_ACCESS_TOKEN: ${{ secrets.FB_PAGE_ACCESS_TOKEN }}
+              run: node index.js
+
+            - name: Commit state.json if changed
+              run: |
+                  git config user.name "github-actions"
+                  git config user.email "github-actions@github.com"
+                  git add state.json
+                  git commit -m "Update state" || echo "No changes"
+                  git push || echo "Nothing to push"
