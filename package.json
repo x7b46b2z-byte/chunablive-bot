@@ -1,0 +1,24 @@
+{
+  "name": "chunablive-bot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/x7b46b2z-byte/chunablive-bot.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/x7b46b2z-byte/chunablive-bot/issues"
+  },
+  "homepage": "https://github.com/x7b46b2z-byte/chunablive-bot#readme",
+  "dependencies": {
+    "cheerio": "^1.2.0"
+  }
+}
