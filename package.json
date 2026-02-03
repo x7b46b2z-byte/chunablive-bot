@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/x7b46b2z-byte/chunablive-bot#readme",
   "dependencies": {
-    "cheerio": "^1.2.0"
+    "cheerio": "^1.2.0",
+    "dotenv": "^17.2.3"
   }
 }
